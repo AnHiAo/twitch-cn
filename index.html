@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>twitch-veibae</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        video{
+            width: 100%;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background: rgb(92, 22, 197);
+        }
+        .todo{
+            width: 13.333%;
+        }
+        .todo svg{
+            width: 100%;
+            border-radius: 7px;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<!-- Or if you want a more recent alpha version -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/hls.js@alpha"></script> -->
+<video id="video" controls></video>
+<div class="todo">
+    <svg t="1646851524802" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2872" width="200" height="200"><path d="M734.378667 890.197333H534.357333L400.896 1024H267.093333v-133.802667H22.357333V178.176L89.258667 0h912.384v623.274667l-267.264 266.922666z m178.176-311.296V89.088H178.005333v645.461333h200.362667v133.461334l133.461333-133.461334h244.736l155.989334-155.648z" fill="#fff" p-id="2873"></path><path d="M667.818667 267.264v267.264h89.088V267.264h-89.088z m-244.736 266.922667h89.088V267.264h-89.088v266.922667z" fill="#fff" p-id="2874"></path></svg>
+</div>
+<script>
+  var video = document.getElementById('video');
+  var videoSrc = 'http://tx-adaptive.hlspull.yximgs.com/gifshow/kwai_actL_ol_act_9249035414_strL.m3u8?txSecret=81004b869279593706dd49087df39bad&txTime=62531e82&stat=cGweUVqvOx1FvIm99Uh%2FwA%3D%3D';
+  if (Hls.isSupported()) {
+    var hls = new Hls();
+    hls.loadSource(videoSrc);
+    hls.attachMedia(video);
+  }
+  else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = videoSrc;
+  }
+</script>
+</body>
+</html>
